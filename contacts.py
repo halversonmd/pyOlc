@@ -1,7 +1,7 @@
 import os
 import json
 import slk
-from datetime import date
+from datetime import date, datetime
 
 
 IM_FOLDER = os.listdir('/home/ubuntu/olc_api/contacts')
