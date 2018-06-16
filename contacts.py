@@ -1,6 +1,7 @@
 import os
 import json
 import slk
+import config
 from datetime import date, datetime
 
 
@@ -22,9 +23,7 @@ for file in CONTACT_FOLDER:
             print('path', path)
             print('txt', txt)
 
-        
-        web_hook = 'https://hooks.slack.com/services/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'
-        slack = slk.OlcSlack(web_hook)
+        slack = slk.OlcSlack(config.web_hook)
         r = slack.send(txt)
         files_sent.append(file)
         print('added: ', file)
