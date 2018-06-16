@@ -10,7 +10,7 @@ for file in IM_FOLDER:
     path = os.path.join('/home/ubuntu/olc_api/contacts/' + file)
     timestamp = file.split('.')[0]
     time_str = datetime.fromtimestamp(float(timestamp)/1000.)
-    time_str = date.strftime(time_str, "%m/%d/%Y %H:%M %p")
+    time_str = date.strftime(time_str, "%m/%d/%Y %I:%M %p")
     with open(path, 'r') as f:
         data = json.loads(f.read())
         data['timestamp'] = time_str
