@@ -1,4 +1,5 @@
 import os
+import json
 
 IM_FOLDER = os.listdir('/home/ubuntu/olc_api/contacts')
 
