@@ -2,8 +2,11 @@ import os
 import json
 import slk
 import config
+from dateutil import tz
 from datetime import date, datetime
 
+from_zone = tz.gettz('UTC')
+to_zone = tz.gettz('America/New_York')
 
 CONTACT_FOLDER = os.listdir('/home/ubuntu/olc_api/contacts')
 
@@ -15,6 +18,7 @@ for file in CONTACT_FOLDER:
         path = os.path.join('/home/ubuntu/olc_api/contacts/' + file)
         timestamp = file.split('.')[0]
         time_str = datetime.fromtimestamp(float(timestamp)/1000.)
+        time_str = time_str.replace(tzinfo=from_zone).astimezone(to_zone)
         time_str = date.strftime(time_str, "%m/%d/%Y %I:%M %p")
         with open(path, 'r') as f:
             data = json.loads(f.read())
