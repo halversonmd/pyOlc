@@ -10,7 +10,7 @@ for file in IM_FOLDER:
     path = os.path.join('/home/ubuntu/olc_api/contacts/' + file)
     timestamp = file.split('.')[0]
     time_str = datetime.fromtimestamp(float(timestamp)/1000.)
-    time_str = date.strftime(time_str, "%d/%m/%y %H:%M")
+    time_str = date.strftime(time_str, "%m/%d/%Y %H:%M %p")
     with open(path, 'r') as f:
         data = json.loads(f.read())
         data['timestamp'] = time_str
@@ -21,6 +21,6 @@ for file in IM_FOLDER:
     
     web_hook = 'https://hooks.slack.com/services/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'
     slack = slk.OlcSlack(web_hook)
-    r = slack.send(txt, time_str)
+    r = slack.send(txt)
     print('slack resp: ', r.text)
 
